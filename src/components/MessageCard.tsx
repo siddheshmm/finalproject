@@ -31,9 +31,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 
   const handleDeleteConfirm = async () => {
     try {
-      const response = await axios.delete<ApiResponse>(
-        /api/delete-message/${message._id}
-      );
+      const response = await axios.delete<ApiResponse>('/api/delete - message / ${ message._id }');
       toast({
         title: response.data.message,
       });
@@ -47,7 +45,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
           axiosError.response?.data.message ?? 'Failed to delete message',
         variant: 'destructive',
       });
-    } 
+    }
   };
 
   return (
