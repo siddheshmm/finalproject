@@ -18,7 +18,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from './ui/button';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { ApiResponse } from '@/types/ApiResponse';
 
 type MessageCardProps = {
@@ -31,11 +31,13 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 
   const handleDeleteConfirm = async () => {
     try {
-      const response = await axios.delete<ApiResponse>('/api/delete - message / ${ message._id }');
+      const response = await axios.delete<ApiResponse>(
+        `/api/delete-message/${message._id}`
+      );
       toast({
         title: response.data.message,
       });
-      onMessageDelete(message._id);
+      onMessageDelete(message._id as string); //Type Assertion: If you're certain that message._id is always a string but TypeScript still sees it as unknown, you can use a type assertion:
 
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
