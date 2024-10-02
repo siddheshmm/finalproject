@@ -20,12 +20,12 @@ import { signIn } from "next-auth/react"
 
 
 
-const page = () => {
+const page = () => 
     // functionality
     
     
     
-    const { toast } = useToast()
+   { const { toast } = useToast()
     const router = useRouter();
 
     // zod implementation
@@ -37,6 +37,7 @@ const page = () => {
             password: ''
          }
     })
+  
 
 
 
@@ -47,24 +48,26 @@ const page = () => {
         password: data.password
       })
       if (result?.error){
+        if (result.error === 'CredentialsSignin'){
         toast({
-          title: "Login Failed",
-          description: "Incorrect username or password",
-          variant: "destructive"
+          title: 'Login Failed',
+          description: 'Incorrect username or password',
+          variant: 'destructive',
         }
-        )
+        );
       } else{
         toast({
-          title: "Error",
+          title: 'Error',
           description: result.error,
-          variant: "destructive"
-        })
+          variant: 'destructive',
+        });
       }
-      if (result?.url)
-        router.replace('/dashboard')
+    }
+      if (result?.url){
+        router.replace('/dashboard');
       }
         
-    }
+    };
 
 
   return (
@@ -84,34 +87,27 @@ const page = () => {
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>email/Username</FormLabel>
               <FormControl>
-              <Input placeholder="username" {...field}
-              onChange={(e) => {
-                field.onChange(e)
-                debounced(e.target.value)
-              }}
+              <Input placeholder="email/username" {...field}
+             
                />
               </FormControl>
 
-              {isCheckingUsername && <Loader2 className="animate-spin"/>}
-
-              <p className={`text-sm ${usernameMessage == "Username is unique" ? 'text-green-500' : 'text-red-500'}`}>
-                {usernameMessage}
-              </p>
+              
               
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField 
-          name="email"
+          name="identifier"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>email/username</FormLabel>
               <FormControl>
-              <Input placeholder="email" {...field}
+              <Input placeholder="email/username" {...field}
               
                />
               </FormControl>
@@ -151,6 +147,6 @@ const page = () => {
         </div>
     </div>
   )
-
+}
 
 export default page
