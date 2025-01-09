@@ -1,6 +1,6 @@
 'use client'
 
-// import { MessageCard } from '@/components/MessageCard'
+import { MessageCard } from '@/components/MessageCard'
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react"
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 
-const page = () => {
+function UserDashboard () {
     const [messages, setMessages] = useState<Message[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [isSwitchLoading, setIsSwitchLoading] = useState(false)
@@ -176,7 +176,7 @@ const page = () => {
             {messages.length > 0 ? (
               messages.map((message, index) => (
                 <MessageCard 
-                  key={message._id}
+                key={message.id}
                   message={message}
                   onMessageDelete={handleDeleteMessage}
                 />
@@ -189,4 +189,4 @@ const page = () => {
       );
 }
 
-export default page
+export default UserDashboard;
