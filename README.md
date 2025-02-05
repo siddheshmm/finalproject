@@ -1,3 +1,10 @@
+## Recognition & Achievements  
+- 📄 Our review paper **"Anonymous Communication on Social Networks using AI-Powered Content Moderation"** was accepted for publication in the **Scopus-indexed journal "Computer Fraud and Security"** (ISSN: 1873-7056).  
+- The paper discusses AI-based content moderation techniques to prevent inappropriate, spam, or fraudulent messages in anonymous messaging platforms.  
+
+🔗 Journal Website: [Computer Fraud and Security](https://computerfraudsecurity.com/)  
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
